@@ -56,23 +56,49 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p>Your username and password can be whatever you want as long as you write it down and remember it because we will be logging into this user later in the lab. Once you have finished these steps, if it is on the bottom of your starting page, check the "Licensing" box and then move on through the pages untill you get to the "Networking" page where you make sure that your virtual network that you just created is selected. You can then "Review and Create" and "Create". </p>
 
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h3>4) Creating A CLient Virtual Machine</h3>
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<p>This next step will be very similar to step 3 because we will be creating another "Virtual Machine". The only difference with this virtual machine is we will be naming it "client-1". This will essentially be a test virtual machine for us. Make sure these settings are selected:</p>
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<p>-Resource Group - Active-Director-Lab (Or the resource group you created in step 1)</p>
+<p>-The same region you have selected for all your applications (For Example:  mine is Central Canada)</p> 
+<p>-Image - (Windows 10 Pro, version 22H2 - x64 Gen2)</p>
+<p>-Size - At least 2 vcpus, 8 GiB memory</p>
+<p>-Selected Inbound Ports - RDP (3389)</p>
+
+<p> Make sure the license box is checked on the first page as well. </p>
+
+<img src="https://i.imgur.com/srCWe7O.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Susbj6e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>When you are done with those settings, go into the "Networking" tab and make sure:</p>
+<p>-Virtual Network : Active-Directory-Vnet</p>
+<p>-Subnet : Default</p>
+<p>Public IP: Client-1 ip</p>
+
+<p>After you are done with these settings you can "Review and Create" -> "Create".</p>
+
+<h3>5) Making DC-1's IP Address (Static)</h3>
+
+<p>The reason we are making DC-1's IP "Static" is so that when we turn off our computer, our IP Address will stay the same. If we were to leave our IP Address for DC-1 on "Dynamic", their is a possibility that our IP address would change when we turn off our computer. To change our virtual machines ip address from "Static" to "Dynamic", first we would have to go into our DC-1 virtual machine by searching "Virtual Machine" and clicking on "DC-1" -> "Networking" -> "Network Settings" -> "Network Interface / ip configuration" (It'll have a green computer chip icon to the left of it) -> "ipconfig-1", make sure to select "Static" under "Private IP Adress Settings" then "Save".</p>
+
+<img src="https://i.imgur.com/aQO5bjh.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/mqji9V2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>6) Firewall</h3>
+
+<p>In most cases, it isn't safe to disable your firewall on your computer, but because this is simply a test "Virtual Machine" it is not going to create any harm. First we will have to log into our "DC-1" virtual machine. Open up your "Remote Destkop" software and make sure to copy the public ip address from this virtual machine. You can do this by searching up "Virtual Machine", clicking the "DC-1" VM you just created and looking for the public address displayed on the right side of the Virtual Machine tab.</p>
+
+<img src="https://i.imgur.com/eSDoOof.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/4HcrXIA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>Once you are here, make sure to login using the username and password you created when we first made "DC-1". Once you have logged into your "DC-1" Virtual Desktop, right-click your windows icon on the bottom left and then select "Run", type in "wf.msc". You will see your windows firewall tab will open up once you do this.</p>
+
+<img src="https://i.imgur.com/Zj1Amaz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>In this window make sure to turn off your "Domain" and "Private" firewalls and then press "Apply" and "Ok".</p>
+
+<img src="https://i.imgur.com/ZQ4ViI2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
+
