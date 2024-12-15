@@ -22,6 +22,13 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 1) Creating Resource Group
 2) Creating A Virtuall Network
+3) Creating Your Domain Controller VM (Virtual Machine)
+4) Creating A Client Virtual Machine
+5) Making DC-1's IP Address (Static)
+6) Firewall
+7) Changing DNS Settings for "Client-1"
+8) Pinging DC-1's Private IP Address
+9) ipconfig /all
 
 
 <h2>Deployment and Configuration Steps</h2>
