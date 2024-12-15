@@ -45,26 +45,30 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/L0CveLE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <p> After you have done this, you will have to make sure you have these settings selected:</p> 
-<p>-Resource Group - Active-Director-Lab (Or the resource group you created in step 1)</p>
-<p>-The same region you have selected for all your applications (For Example:  mine is Central Canada)</p> 
-<p>-Image - (Windows Server 2022 Datacenter: Azure Edition - x64 Gen2)</p>
-<p>-Size - At least 2 vcpus, 8 GiB memory</p>
-<p>-Selected Inbound Ports - RDP (3389)</p>
+<ul>
+  <li>Resource Group - Active-Director-Lab (Or the resource group you created in step 1)</li>
+  <li>The same region you have selected for all your applications (For Example: mine is Central Canada)</li>
+  <li>Image - (Windows Server 2022 Datacenter: Azure Edition - x64 Gen2)</li>
+  <li>Size - At least 2 vcpus, 8 GiB memory</li>
+  <li>Selected Inbound Ports - RDP (3389)</li>
+</ul>
 
 <img src="https://i.imgur.com/wRpF2OO.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/GBW1G7T.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <p>Your username and password can be whatever you want as long as you write it down and remember it because we will be logging into this user later in the lab. Once you have finished these steps, if it is on the bottom of your starting page, check the "Licensing" box and then move on through the pages untill you get to the "Networking" page where you make sure that your virtual network that you just created is selected. You can then "Review and Create" and "Create". </p>
 
-<h3>4) Creating A CLient Virtual Machine</h3>
+<h3>4) Creating A Client Virtual Machine</h3>
 
 <p>This next step will be very similar to step 3 because we will be creating another "Virtual Machine". The only difference with this virtual machine is we will be naming it "client-1". This will essentially be a test virtual machine for us. Make sure these settings are selected:</p>
 
-<p>-Resource Group - Active-Director-Lab (Or the resource group you created in step 1)</p>
-<p>-The same region you have selected for all your applications (For Example:  mine is Central Canada)</p> 
-<p>-Image - (Windows 10 Pro, version 22H2 - x64 Gen2)</p>
-<p>-Size - At least 2 vcpus, 8 GiB memory</p>
-<p>-Selected Inbound Ports - RDP (3389)</p>
+<ul>
+  <li>Resource Group - Active-Director-Lab (Or the resource group you created in step 1)</li>
+  <li>The same region you have selected for all your applications (For Example: mine is Central Canada)</li>
+  <li>Image - (Windows 10 Pro, version 22H2 - x64 Gen2)</li>
+  <li>Size - At least 2 vcpus, 8 GiB memory</li>
+  <li>Selected Inbound Ports - RDP (3389)</li>
+</ul>
 
 <p> Make sure the license box is checked on the first page as well. </p>
 
@@ -72,10 +76,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/Susbj6e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <p>When you are done with those settings, go into the "Networking" tab and make sure:</p>
-<p>-Virtual Network : Active-Directory-Vnet</p>
-<p>-Subnet : Default</p>
-<p>Public IP: Client-1 ip</p>
-
+<ul>
+  <li>Virtual Network: Active-Directory-Vnet</li>
+  <li>Subnet: Default</li>
+  <li>Public IP: Client-1 IP</li>
+</ul>
 <p>After you are done with these settings you can "Review and Create" -> "Create".</p>
 
 <h3>5) Making DC-1's IP Address (Static)</h3>
@@ -96,9 +101,38 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/Zj1Amaz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-<p>In this window make sure to turn off your "Domain" and "Private" firewalls and then press "Apply" and "Ok".</p>
+<p>In this window make sure to turn off your "Domain", "Private" and "Public" firewalls and then press "Apply" and "Ok".</p>
 
 <img src="https://i.imgur.com/ZQ4ViI2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>7) Changing DNS Settings for "Client-1"</h3>
+
+<p>This next step will be copying "DC-1" private IP address and pasting it to "Client-1" in order for us to have these VM's properly connected. We will start by going back to your personal desktop and in the Azure browser, search for "Virtual Machine". Once you have searched this up, you can select "DC-1" and copy the "Private IP Address" on the bottom right side of the system settings.</p>
+
+<img src="https://i.imgur.com/KZU2k7s.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>Once you have copied DC-s's Private IP Address, search for "Virtual Machines" -> Select "Client-1" -> go to "Network Settings" -> "Network Interface / IP configuration" -> "DNS Servers" -> "Custom" and Paste DC-1's private ip address. </p>
+
+<img src="https://i.imgur.com/V5V5910.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<img src="https://i.imgur.com/Xywibzq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>8) Pinging DC-1's Private IP Address</h3>
+
+<p> In this next step we will be logging into our Client-1 virtual machine using our remote desktop connector to try and ping our dc-1 virtual machine. In order to do this, we will first need to be logged into "Client-1" on a remote desktop connector. Make sure to copy the "Public IP Address" for Client-1 (if you forget how to find your Public IP Address, you can go back to step 6 and re-read that section). Once you have copied your Public IP, you can then login using your username and password you created at the start of the lab for "Client-1". Once you have logged into "CLient-1", on the windows search bar in the bottom left of the screen, typer in "Power Shell" and click that. </p>
+
+<img src="https://i.imgur.com/Ez5siOU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>Once your Power Shell is open, make sure to type in "ping" and whatever  DC-1's Private IP Address was (For Example: ping 10.0.0.4) into Power Shell. You will know you have done this right when you get four successful pings underneath your ping request. Your power shell should look like this if you have done everything right. </p>
+
+<img src="https://i.imgur.com/Woc6zCX.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>9) ipconfig /all </h3>
+
+<p>After you have successfully pinged, In the same powershell window type in "ipconfig /all". If your DNS server for "Client-1" is the same as "DC-1" (the private ip address you pasted earlier), then you have successfully applied Active Directory to your Virtual Machine! </p>
+
+<h3>Congratulations!</h3>
+
 
 
 
