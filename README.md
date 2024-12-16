@@ -35,13 +35,13 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h3>1) Creating Resource Group</h3>
 
-<p>Open up your Microsoft Azure and search for "Resource Group" in the search bar. Once you have selected "Resource Groups", click the top left button that says "Create". I will be naming my resource group "Active-Directory-Lab". Make sure to select your region to the corrisponding region you are in (I'm in Canada, so my region would be Central Canada). Once you are done, you can simply review and create.</p>
+<p>Open up your Microsoft Azure and search for "Resource Group" in the search bar. Once you have selected "Resource Groups", click the top left button that says "Create". I will be naming my resource group "Active-Directory-Lab". Make sure to select your region to the corresponding region you are in (I'm in Canada, so my region would be Central Canada). Once you are done, you can simply review and create.</p>
 
 <img src="https://i.imgur.com/Adulmc4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h3>2) Creating A Virtuall Network</h3>
 
-<p> For this step, you will go up to the search bar again and search up "Virtual Networks". After you have selected Virtual Networks you can begin the procces by clicking the "Create" icon on the top left under "Virtual Networks". You will then be prompted to the "Create Virtual Network" screen where you will follow the same procedure as the one listed in step 2. Make sure you have selected the resopurce group you just created and make sure your region is the same as your resource group. I will be naming my virtual network "Active-Directory-Vnet". Once you have completed those steps, press "Review and Create" and "Create" on the bottom left of the screen. </p>
+<p> For this step, you will go up to the search bar again and search up "Virtual Networks". After you have selected Virtual Networks you can begin the process by clicking the "Create" icon on the top left under "Virtual Networks". You will then be prompted to the "Create Virtual Network" screen where you will follow the same procedure as the one listed in step 2. Make sure you have selected the resource group you just created and make sure your region is the same as your resource group. I will be naming my virtual network "Active-Directory-Vnet". Once you have completed those steps, press "Review and Create" and "Create" on the bottom left of the screen. </p>
 
 <img src="https://i.imgur.com/UMjl4mE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
@@ -104,7 +104,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/eSDoOof.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/4HcrXIA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-<p>Once you are here, make sure to login using the username and password you created when we first made "DC-1". Once you have logged into your "DC-1" Virtual Desktop, right-click your windows icon on the bottom left and then select "Run", type in "wf.msc". You will see your windows firewall tab will open up once you do this.</p>
+<p>Once you are here, make sure to login using the username and password you created when we first made "DC-1". Once you have logged into your "DC-1" Virtual Desktop, right-click your windows icon on the bottom left, select "Run" and type in "wf.msc". You will see your windows firewall tab will open up once you have done this.</p>
 
 <img src="https://i.imgur.com/Zj1Amaz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
@@ -126,7 +126,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h3>8) Pinging DC-1's Private IP Address</h3>
 
-<p> In this next step we will be logging into our Client-1 virtual machine using our remote desktop connector to try and ping our dc-1 virtual machine. In order to do this, we will first need to be logged into "Client-1" on a remote desktop connector. Make sure to copy the "Public IP Address" for Client-1 (if you forget how to find your Public IP Address, you can go back to step 6 and re-read that section). Once you have copied your Public IP, you can then login using your username and password you created at the start of the lab for "Client-1". Once you have logged into "CLient-1", on the windows search bar in the bottom left of the screen, typer in "Power Shell" and click that. </p>
+<p> In this next step we will be logging into our Client-1 virtual machine using our remote desktop connector to try and ping our dc-1 virtual machine. In order to do this, we will first need to be logged into "Client-1" on a remote desktop connector. Make sure to copy the "Public IP Address" for Client-1 (if you forget how to find your Public IP Address, you can go back to step 6 and re-read that section). Once you have copied your Public IP, you can then login using your username and password you created at the start of the lab for "Client-1". Once you have logged into "Client-1", on the windows search bar in the bottom left of the screen, type in "Power Shell" and click that. </p>
 
 <img src="https://i.imgur.com/Ez5siOU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
